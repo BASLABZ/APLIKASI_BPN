@@ -149,6 +149,21 @@
 				$queryAPHB = mysql_query("SELECT count(*) as jumlahAPHB FROM ppat p JOIN pengguna pe on p.idpengguna = pe.idpengguna where p.jenisakta='APHB' AND pe.idpengguna='".$idppatfilter."' AND tgl_penyerahan between '".$periodeawal."' AND '".$periodeakhir."' AND pe.idkota = '".$idkota."'");
 				$jumlahAPHB = mysql_fetch_array($queryAPHB);
 
+				$queryhibah = mysql_query("SELECT count(*) as hibah FROM ppat where jenisakta='Hibah' AND tgl_penyerahan between '".$periodeawal."' AND '".$periodeakhir."' AND pe.idpengguna='".$idppatfilter."' ");
+				$jumalahhibah = mysql_fetch_array($queryhibah); 
+
+				$querytukarmenukar = mysql_query("SELECT count(*) as tukarmenukar FROM ppat where jenisakta='Tukar-menukar' AND tgl_penyerahan between '".$periodeawal."' AND '".$periodeakhir."' AND pe.idpengguna='".$idppatfilter."' ");
+				$jumalahtukarmenukar = mysql_fetch_array($querytukarmenukar); 
+
+				$querytinbreng = mysql_query("SELECT count(*) as inbreng FROM ppat where jenisakta='Inbreng' AND tgl_penyerahan between '".$periodeawal."' AND '".$periodeakhir."' AND pe.idpengguna='".$idppatfilter."' ");
+				$jumalahinbreng = mysql_fetch_array($querytinbreng); 
+
+				$querySKMHT = mysql_query("SELECT count(*) as SKMHT FROM ppat where jenisakta='SKMHT' AND tgl_penyerahan between '".$periodeawal."' AND '".$periodeakhir."' AND pe.idpengguna='".$idppatfilter."' ");
+				$jumalahSKMHT = mysql_fetch_array($querySKMHT); 
+
+
+				$queryAPHGBHM = mysql_query("SELECT count(*) as APHGBHM FROM ppat where jenisakta='APHGB/HP diatas HM' AND tgl_penyerahan between '".$periodeawal."' AND '".$periodeakhir."' AND pe.idpengguna='".$idppatfilter."' ");
+				$jumalahAPHGBHM = mysql_fetch_array($queryAPHGBHM); 
 				
 			 ?>
 			<table>
@@ -219,6 +234,55 @@
 									 <td><div style="width: 600px;"></div></td>
 									 <td><center><?php echo $_SESSION['namalengkap']; ?></center></td>
 
+				</tr>
+				<tr>
+					<td><div style="width: 250px;"></div></td>
+					<td>
+						Akta Hibah
+					</td>
+					<td><div style="width: 100px;"></div></td>
+					<td><?php echo $jumalahhibah['hibah']; ?> (<?php echo ucwords(Terbilang($jumalahhibah['hibah'])); ?>) Buah</td>
+					<td></td>
+
+				</tr>
+				<tr>
+					<td><div style="width: 250px;"></div></td>
+					<td>
+						Akta Tukar Menukar
+					</td>
+					<td><div style="width: 100px;"></div></td>
+					<td><?php echo $jumalahtukarmenukar['tukarmenukar']; ?> (<?php echo ucwords(Terbilang($jumalahtukarmenukar['tukarmenukar'])); ?>) Buah</td>
+					<td></td>
+
+				</tr>
+				<tr>
+					<td><div style="width: 250px;"></div></td>
+					<td>
+						Akta Inbreng
+					</td>
+					<td><div style="width: 100px;"></div></td>
+					<td><?php echo $jumalahinbreng['inbreng']; ?> (<?php echo ucwords(Terbilang($jumalahinbreng['inbreng'])); ?>) Buah</td>
+					<td></td>
+
+				</tr>
+				<tr>
+					<td><div style="width: 250px;"></div></td>
+					<td>
+						Akta SKMHT
+					</td>
+					<td><div style="width: 100px;"></div></td>
+					<td><?php echo $jumalahSKMHT['SKMHT']; ?> (<?php echo ucwords(Terbilang($jumalahSKMHT['SKMHT'])); ?>) Buah</td>
+					<td></td>
+
+				</tr>
+				<tr>
+					<td><div style="width: 250px;"></div></td>
+					<td>
+						Akta APHGB/HP diatas HM
+					</td>
+					<td><div style="width: 100px;"></div></td>
+					<td><?php echo $jumalahAPHGBHM['APHGBHM']; ?> (<?php echo ucwords(Terbilang($jumalahAPHGBHM['APHGBHM'])); ?>) Buah</td>
+					<td></td>
 				</tr>
 			</table>
 </body>

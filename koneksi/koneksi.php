@@ -1,10 +1,10 @@
 <?php 
-	$server 			= "localhost";
-	$username 			= "root";
-	$password 			= "";
-	$database 			= "db_ppat";
-	$koneksiserver 		= mysql_connect($server,$username,$password)or die("server of");
-	$koneksidatabase 	= mysql_select_db($database) or die("server of ");
+  $server       = "localhost";
+  $username       = "u0919610_root";
+  $password       = "W0r3&Tr0j43";
+  $database       = "u0919610_ppat";
+  $koneksiserver    = mysql_connect($server,$username,$password)or die("server of");
+  $koneksidatabase  = mysql_select_db($database) or die("server of ");
  ?>
  <?php 
  // FUNGSI DATE CONVERT
